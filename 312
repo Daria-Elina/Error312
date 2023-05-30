@@ -1,0 +1,32 @@
+double rec_fact(unsigned n)
+{
+  return n == 0 ? 1.0 : n * rec_fact(n - 1);
+}
+double tcr_fact(unsigned n, double fact = 1.0)
+{
+  return n == 0 ? fact : tcr_fact(n - 1, n * fact);
+}
+double tcr_fact_caller(unsigned n)
+{
+  return tcr_fact(n);
+}
+double itr_fact_0(unsigned n)
+{
+  double fact = 1.0;
+  while (true)
+  {
+    if (n == 0)
+      return fact;
+    const auto old_n = n;
+    const auto old_fact = fact;
+    n = old_n - 1;
+    fact = old_n * old_fact;
+  }
+}
+double itr_fact(unsigned n)
+{
+  double fact = 1.0;
+  for (; n != 0; --n)
+    fact *= n;
+  return fact;
+}
